@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block title %}RSS & ATOM beslemeleri{% endblock %}
+
+{% block heading %}
+
+<h1>RSS & ATOM beslemeleri</h1>
+
+RSS ve ATOM beslemeleri ile en son soru ve cevapları takip edin. 
+
+<br><br>
+
+{% endblock %}
+
+{% block col_1 %}
+	
+	<table align="center" cellpadding="5">
+		<tr>
+			<td>En son eklenen sorular</td>
+			<td>
+				<a href="{% url rss_feeds url="soru" %}"><span style="border:1px solid;border-color:#FC9 #630 #330 #F96;padding:0 3px;font:bold 10px verdana,sans-serif;color:#FFF;background:#F60;margin:0;">RSS</span></a>
+			</td>
+			<td>
+				<a href="{% url atom_feeds url="soru" %}"><span style="border:1px solid;border-color:#FC9 #630 #330 #F96;padding:0 3px;font:bold 10px verdana,sans-serif;color:#FFF;background:#F60;margin:0;">ATOM</span></a>
+			</td>
+		</tr>
+		<tr>
+			<td>En son verilen cevaplar</td>
+			<td>
+				<a href="{% url rss_feeds url="cevap" %}"><span style="border:1px solid;border-color:#FC9 #630 #330 #F96;padding:0 3px;font:bold 10px verdana,sans-serif;color:#FFF;background:#F60;margin:0;">RSS</span></a>
+			</td>
+			<td>
+				<a href="{% url atom_feeds url="cevap" %}"><span style="border:1px solid;border-color:#FC9 #630 #330 #F96;padding:0 3px;font:bold 10px verdana,sans-serif;color:#FFF;background:#F60;margin:0;">ATOM</span></a>
+			</td>
+		</tr>
+	</table>
+	
+{% endblock %}	
+
+
+{% block col_2 %}
+	
+	<div style="background-color:#efefef; padding:4px; color:#444444;">
+		<h2>RSS ve ATOM nedir?</h2>
+		RSS ve ATOM beslemeleri (feeds), sürekli güncellenen site içeriğini takip etmenizde kolaylık sağlayan bir teknolojidir. 
+		Modern web tarayıcılarının çoğu bu teknolojileri desteklemektedir. 
+		Bu nedenle, ilgili linkin üzerine tıkladığınızda bu dokümanı nasıl takip edebileceğinizi tarayıcınız size anlatacaktır.
+		RSS ve ATOM beslemelerinin içeriği aynıdır, dilediğinizi seçebilirsiniz.
+	</div>
+			
+{% endblock %}	
+

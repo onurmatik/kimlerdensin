@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ question }}{% endblock %}
+{% block description %}{{ question.question }} {{ question.verb.verb }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}, {{ question.verb.negative }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}{% endblock %}
+{% block keywords %}{{ question.question }}, {{ question.verb.verb }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}, {{ question.verb.negative }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}{% endblock %}
+
+{% block navigation %}
+	<a href="{% url questions.views.question_list %}">sorular</a>
+	&raquo;
+	{{ question }}
+{% endblock %}
+
+{% block content %}
+
+	{% include "questions/question.html" %}
+
+<br><br>
+
+<table width="100%">
+	<tr>
+		<td width="50%" valign="top">
+			<h2>
+			<a href="{ url users.views.browse_user_by_answer verb_slug=question.verb.slug,question_slug=question.slug %}">
+				{{ question.question }} {{ question.verb.verb }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}</a>
+			</h2>
+			{% if answers_yes %}
+				{% for answer in answers_yes %}
+					{{ answer.user.username }} 
+				{% endfor %}
+			{% else %}
+				{{ question.question }} {{ question.verb.verb }} kimse yok
+			{% endif %}
+		</td>
+		<td width="50%" valign="top">
+			<h2>
+			<a href="{ url users.views.browse_user_by_answer verb_slug=question.verb.negative_slug,question_slug=question.slug %}">
+				{{ question.question }} {{ question.verb.negative }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}</a>
+			</h2>
+			{% if answers_no %}
+				{% for answer in answers_no %}
+					{{ answer.user.username }} 
+				{% endfor %}
+			{% else %}
+				{{ question.question }} {{ question.verb.negative }} kimse yok
+			{% endif %}
+		</td>		
+</table>
+
+<br>
+
+{% endblock %}

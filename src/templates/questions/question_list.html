@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}{% if verb %}{{ verb.verb }}{% ifequal verb.type 1 %}lardan mısın?{% else %}lerden misin?{% endifequal %}{% else %}tüm sorular{% endif %}{% endblock %}
+{% block description %}{% if verb %}{{ verb.verb }}{% ifequal verb.type 1 %}lardan mısın?{% else %}lerden misin?{% endifequal %}{% else %}tüm sorular{% endif %}{% endblock %}
+{% block keywords %}
+	{% for question in object_list %}question.question, {% endfor %}
+{% endblock %}
+
+{% block col_1 %}
+<h1>
+{% if verb %}{{ verb.verb }}{% ifequal verb.type 1 %}lardan mısın?{% else %}lerden misin?{% endifequal %}{% else %}tüm sorular{% endif %}
+</h1>
+
+{% if is_paginated %}
+	<center>
+	{% if has_previous %}
+		{% ifnotequal previous 1 %}
+		<a href="/soru/{% if verb %}{{ verb.slug }}/{% endif %}1/"
+			alt="ilk sayfa" title="ilk sayfa">1</a>
+		...
+		{% endifnotequal %}
+		<a href="/soru/{% if verb %}{{ verb.slug }}/{% endif %}{{ previous }}/"
+			alt="{{ previous }}. sayfa" title="{{ previous }}. sayfa">{{ previous }}</a>
+	{% endif %}
+	{% ifnotequal pages 1 %}
+		<strong>{{ page }}</strong>
+	{% endifnotequal %}
+	{% if has_next %}
+		<a href="/soru/{% if verb %}{{ verb.slug }}/{% endif %}{{ next }}/"
+			alt="{{ next }}. sayfa" title="{{ next }}. sayfa">{{ next }}</a>
+		{% ifnotequal next pages %}
+			...
+			<a href="/soru/{% if verb %}{{ verb.slug }}/{% endif %}{{ pages }}/"
+				alt="son sayfa" title="son sayfa">{{ pages }}</a>
+		{% endifnotequal %}
+	{% endif %}
+	</center>
+{% endif %}
+
+{% for question in object_list %}
+	{% include "questions/question.html" %}
+	<br>
+{% endfor %}
+
+{% endblock %}
+
+
+{% block col_2 %}
+
+	<br>
+	
+	<h2>fiillerine göre</h2>
+	{% for item in verb_cloud %}
+		<a href="{% url question_list_by_verb verb_slug=item.verb.slug %}" class="cloud_font_{{ item.weight }}">{{ item.verb.verb }}</a>
+		&nbsp;&nbsp;&nbsp;
+	{% endfor %}
+	
+	<br><br>
+	
+	<h2>hiç cevaplanmayanlar</h2>
+	{% if not_answered %}
+		{% for question in not_answered %}
+			{% include "questions/question.html" %}
+			<br>
+		{% endfor %}
+	{% else %}
+		hiç cevaplanmayan soru yok
+	{% endif %}
+	
+{% endblock %}

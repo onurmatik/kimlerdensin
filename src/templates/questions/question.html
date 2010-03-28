@@ -1,0 +1,55 @@
+<table id="question_{{ question.id }}" class="question 
+{% if question.user_answer %}ans_{{ question.user_answer }}{% endif %}
+" width="100%">
+	
+	{% if not u %}
+	<tr>
+		<td colspan="2">
+			{# not in a generic detail page #}
+			<a href="/uye/{{ question.user.username }}/">{{ question.user.username }}</a> soruyor:
+		</td>
+	</tr>
+	{% endif %}
+	
+	<tr>
+		<td colspan="2">
+			<span style="font-size:16pt; color:#666666;">
+				{{ question.question }} {{ question.verb.verb }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}{% ifequal question.verb.type 1 %}dan mısın{% else %}den misin{% endifequal %}?
+			</span>
+			<span id="q_{{ question.id }}_ans" style="font-size:14pt;">
+			{% if question.user_answer %}
+				{% ifequal question.user_answer 1 %}
+					<span style="color:#66cc33">evet</span>
+				{% else %}
+					<span style="color:#cc2222">hayır</span>
+				{% endifequal %}
+			{% endif %}
+			</span>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="2">
+			<span style="font-size:12pt;">
+			{% with question.id as question_id %}
+				<span id="q_{{ question_id }}_opt_1" class="opt_1" {% ifequal question.user_answer 1 %}style="display:none"{% endifequal %}>
+					<a href="#" onclick="$(ans({{ question.id }}, '1'))" style="color:inherit;"><img src="/check.png" border="0"> evet</a>
+				</span>
+				<span id="q_{{ question_id }}_opt_2" class="opt_2" {% ifequal question.user_answer 2 %}style="display:none"{% endifequal %}>
+					<a href="#" onclick="$(ans({{ question.id }}, '2'))" style="color:inherit;"><img src="/cross.png" border="0"> hayır</a>
+				</span>
+				<span id="q_{{ question_id }}_opt_0" class="opt_0" {% if not question.user_answer %}style="display:none"{% endif %}>
+					<a href="#" onclick="$(ans({{ question.id }}, '0'))" style="color:inherit;"><img src="/cancel.png" border="0"> iptal</a>
+				</span>
+			{% endwith %}
+			</span>
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan="2">
+			<a href="{{ question.get_absolute_url }}">{{ question.question }} {{ question.verb.verb }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %} / {{ question.verb.negative }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %} kim?</a>
+		</td>
+	</tr>
+	
+</table>

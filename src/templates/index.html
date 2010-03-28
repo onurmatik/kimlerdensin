@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block title %}Kimlerdensin? Farklarımızla birlikteyiz{% endblock %}
+
+{% block col_1 %}
+	
+	<h2>Güncel aktif sorular</h2>
+	
+	{% for question in questions %}
+		{% include "questions/question.html" %}
+		<br>
+	{% endfor %}
+	
+	<h2>En son cevaplar</h2>
+	
+	{% for answer in answers %}
+		<a href="{{ answer.get_absolute_url }}">{{ answer }}</a>
+		<br>
+	{% endfor %}
+	
+{% endblock %}	
+
+
+{% block col_2 %}
+	
+	<div style="background-color:#efefef; padding:4px; color:#444444;">
+		<strong>Kimlerdensin?com</strong>, sorulara verdiğimiz yanıtlara göre,
+		farklarımız ve benzerliklerimiz üzerinden yanyana geldiğimiz bir sosyal ağdır. 
+		<br>
+		Tüm üyeler, diğerleri hakkında merak ettikleri soruları sorabilir, diledikleri soruları cevaplandırabilirler.
+		<br>
+		Sitede, şimdiye kadar <strong>{{ user_count }} üye</strong>nin <strong>{{ question_count }} soru</strong>su, <strong>{{ answer_count }} yanıt</strong> aldı.
+	</div>
+	
+	<br>
+	
+	<div style="background-color:#efefef; padding:4px; color:#444444;">
+		{% include "questions/group_cloud.html" %}
+	</div>
+	
+{% endblock %}	
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{# do not display d #}
+{% block content_d %}{% endblock %}
+
+{% block title %}Bu işlem için yetkin yok{% endblock %}
+
+{% block content_p1_title %}Bu işlem için yetkin yok{% endblock %}
+
+{% block content_p1 %}
+{% if message %}
+	{{ message }}
+{% else %}
+	Yapmaya çalıştığın işlem için yetkin yok. Bu girişim kaydedildi.
+	<br><br>
+	İşlem yapmadan geçen süre sonucunda oturum kapanmış olabilir. 
+	Durum böyle ise, yetkili bir kullanıcı ile tekrar <a href="#" onclick="popup('login');">giriş yap</a>.
+{% endif %}
+
+{% endblock %}

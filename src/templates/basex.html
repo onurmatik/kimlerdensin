@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}/base.css{% endblock %}" />
+{% block extrastyle %}{% endblock %}
+
+{% block extrahead %}
+	<meta name="Description" content="{% block description %}{% endblock %}" />
+	<meta name="Keywords" content="{% block keywords %}{% endblock %},soru, cevap, arkadaşlık, sosyal ortam" />
+	<meta name="Robots" content="index,follow" />
+	<meta name="Rating" content="General" />
+{% endblock %}
+
+<script src="/jquery.pack.js"></script>
+<script src="/jquery.corner.js"></script>
+<script src="/common.js"></script>
+
+
+</head>
+
+{% load i18n %}
+
+<body>
+
+<center>
+	<script type="text/javascript"><!--
+	google_ad_client = "pub-9671725205494831";
+	google_ad_width = 728;
+	google_ad_height = 90;
+	google_ad_format = "728x90_as";
+	google_ad_type = "text_image";
+	google_ad_channel = "";
+	google_color_border = "ff0000";
+	google_color_bg = "FFFFFF";
+	google_color_link = "0000FF";
+	google_color_text = "000000";
+	google_color_url = "008000";
+	google_ui_features = "rc:10";
+	//-->
+	</script>
+	<script type="text/javascript"
+	  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+</center>
+
+<br>
+
+<table width="780" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<div id="main" class="tab"><a href="{% url index.views.index %}">Ana sayfa</a></div>
+			<div id="questions" class="tab"><a href="{% url questions.views.question_list %}">Sorular</a></div>
+			<div id="members" class="tab"><a href="/uyeler/">Üyeler</a></div>
+		</td>
+		<td>
+			
+		</td>
+		<td align="right">
+		{% if user.is_authenticated %}
+			<strong>{{ user.username }}</strong>
+			|
+			<a href="{% url question_add %}">soru sor</a>
+			|
+			<a href="{{ user.get_absolute_url }}">sayfam</a>
+		{% else %}
+			<a href="{% url django.contrib.auth.views.login %}">giriş</a> |
+		{% endif %}
+		&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<div id="tab_rule" class="tab_rule">&nbsp;{% block navigation %}&nbsp;{% endblock %}</div>
+		</td>
+	</tr>
+</table>
+
+<div style="text-align:center; padding:6px;">
+{% block links %}
+{% endblock %}
+</div>
+
+<div style="width:780px; position:relative; left:50%; margin-left:-390px;">
+{% block content %}
+{% block heading %}{% endblock %}
+<table width="100%">
+	<tr>
+		<td width="50%" valign="top">{% block col_1 %}{% endblock %}</td>
+		<td width="50%" valign="top">{% block col_2 %}{% endblock %}</td>
+	</tr>
+</table>
+{% endblock %}
+</div>
+
+<br>
+
+<table width="780" align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<div id="footer_rule" class="tab_rule">
+				&nbsp;
+			</div>
+		</td>
+	</tr>
+</table>
+
+<center>
+<a href="{% url feed_index %}"><span style="border:1px solid;border-color:#FC9 #630 #330 #F96;padding:0 3px;font:bold 10px verdana,sans-serif;color:#FFF;background:#F60;margin:0;">XML</span></a>
+</center>
+
+<script>
+$('div.tab').corner('top');
+$('#tab_rule').corner('tr');
+$('#footer_rule').corner('bottom');
+{% if selected_tab %}
+	$('#{{ selected_tab }}').addClass('selected_tab');
+	$('#tab_rule').addClass('selected_tab_rule');
+	$('#footer_rule').addClass('selected_tab_rule');
+{% endif %}
+</script>
+
+{% if user.is_authenticated %}
+<script>$(update_messages_link)</script>
+{% endif %}
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1026111-3";
+urchinTracker();
+</script>
+
+</body>
+</html>

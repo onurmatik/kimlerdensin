@@ -1,0 +1,78 @@
+body {
+	font-family:Verdena, Tahoma, Arial, Helvetica; 
+	font-size:10pt; 
+	background-color:#FFFFFF;}
+
+.tab
+{
+	background-color:#dddddd;
+	padding: 6px;
+	padding-left:10px;
+	padding-right:10px;
+	min-width: 80px;
+	width:80px;
+	text-align:center;
+	float:left;
+	margin-right:4px;
+}
+
+.selected_tab
+{
+	background-color:#99CCFF;
+	color:#000000;
+	font-weight:bold;
+}
+
+.tab_rule
+{
+	clear:both;
+	background-color:#dddddd;
+	color:#FFFFFF;
+	padding:4px;
+}
+
+.selected_tab_rule
+{
+	background-color:#99CCFF;
+}
+
+.ans_1 {background-color:#ccff99;}
+.ans_2 {background-color:#ffcccc;}
+
+.opt_0 {color:#2222cc; font-weight:bold;}
+.opt_1 {color:#66cc33; font-weight:bold;}
+.opt_2 {color:#cc2222; font-weight:bold;}
+
+#sbi
+{
+	background-color:#ffffff;
+	border: 1px #000000 inset;
+}
+
+#sbb
+{
+	background-color:#dddddd;
+	border: 1px #000000 outset;
+}
+
+input{width:100%}
+
+h1 {font-size:16pt; margin:0px; color:#444444}
+h2 {font-size:11pt; margin:0px; color:#666666}
+h3 {font-size:10pt; margin:0px;}
+h4 {font-size:9pt; margin:0px;}
+
+.error
+{
+	color: #ff0000;
+}
+
+.cloud_font_1 {font-size:9pt}
+.cloud_font_2 {font-size:10pt}
+.cloud_font_3 {font-size:12pt}
+.cloud_font_4 {font-size:16pt}
+.cloud_font_5 {font-size:20pt}
+
+a {text-decoration: none; color:#0000FF}
+a:hover {text-decoration: underline;}
+

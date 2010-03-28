@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Sayfa bulunamadı{% endblock %}
+
+{% block content_p1_title %}
+Aradığın sayfa bulunamadı
+{% endblock %}
+
+{% block content %}
+
+	<h1>Sayfa bulunamadı</h1>
+	Adresi kontrol ederek tekrar deneyin. 
+	Artık geçerli olmayan, site dışı bir linki takip etmiş olabilirsiniz.
+	Lütfen linklerinizi güncelleyin.
+	<br><br>
+	<a href="/">Ana sayfa</a>ya giderek gezintinize devam edebilirsiniz.
+
+<p>&nbsp;</p>
+
+<center>
+	{% include 'searchbox.html' %}
+</center>
+
+{% endblock %}

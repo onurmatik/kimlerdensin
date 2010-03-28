@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Soru ekle{% endblock %}
+{% block description %}Kendi sorularını ekle{% endblock %}
+{% block keywords %}soru ekle, soru sor{% endblock %}
+
+{% block content %}
+
+<h1>Soru ekle</h1>
+
+<br>
+
+<form method="post" id="question_form">
+	<table width="90%" align="center">
+		<tr>
+			<td valign="top">
+				{{ form.question }}
+				{% if form.question.errors %}
+					<br>
+					<span style="color:#ff0000;">{{ form.question.errors|join:";" }}</span>
+				{% endif %}
+			</td>
+			<td valign="top">
+				{{ form.verb }}
+				{% if form.verb.errors %}
+					<br>
+					<span style="color:#ff0000;">{{ form.verb.errors|join:";" }}</span>
+				{% endif %}
+			</td>
+			<td valign="top">
+				<input type="submit" value="kaydet">
+			</td>
+		</tr>
+		{% if form_errors_all %}
+		<tr>
+			<td colspan="3">
+				<span style="color:#ff0000;">{{ form_errors_all|join:";" }}</span>
+			</td>
+		</tr>
+		{% endif %}
+		<tr style="color:#999999;">
+			<td>playstation oynamayı</td>
+			<td>sevenlerden misin?</td>
+			<td></td>
+		</tr>
+		<tr style="color:#999999;">
+			<td>güzel olduğunu</td>
+			<td>düşünenlerden misin?</td>
+			<td></td>
+		</tr>
+		<tr style="color:#999999;">
+			<td>kapadokya'yı</td>
+			<td>görenlerden misin?</td>
+			<td></td>
+		</tr>
+	</table>
+</form>
+
+<br>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<div class="list_container">
+	{% for item in group_cloud %}
+		<a href="
+			{% ifequal item.answer 1 %}
+				{% url users.views.browse_user_by_answer verb_slug=item.question.verb.slug,question_slug=item.question.slug %}
+			{% else %}
+				{% url users.views.browse_user_by_answer verb_slug=item.question.verb.negative_slug,question_slug=item.question.slug %}
+			{% endifequal %}" 
+			class="cloud_font_{{ item.weight }}">
+			{{ item.question.question }}
+			{% ifequal item.answer 1 %}{{ item.question.verb.verb }}{% else %}{{ item.question.verb.negative }}{% endifequal %}{% ifequal item.question.verb.type 1 %}lar{% else %}ler{% endifequal %}
+		</a>
+		&nbsp;&nbsp;&nbsp;
+	{% endfor %}
+</div>

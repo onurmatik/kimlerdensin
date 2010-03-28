@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="/css/reset.css"/>
+<script type="text/javascript" src="/jslib/jquery-1.4.2.min.js" language="javascript"></script>
+<script type="text/javascript" src="/jslib/tabs.js" language="javascript"></script>
+<head>
+<body>
+<div class="page">
+	<div class="header">
+		<div class="top_area">
+			<div class="user_nav">
+				<div class="un_leftcap"></div>
+				<div class="un_rightside">
+					<div class="un_rightcap"></div>
+					<div class="un_inside">
+						<div class="un_menu">
+							<ul>
+								<li><a href="#" onclick="$('#login_popup').show('slow');">Giriş</a></li>
+								<li><a href="#">Üye ol</a></li>
+								<li><a href="#">Yardım</a></li>
+							</ul>
+						</div>
+						<div class="search">
+							<form method="post" action="">
+								<div class="search_lcap"></div>
+								<div class="search_inside">
+									<input class="search_input" type="text" value="" name="" />
+								</div>
+								<input class="search_submit" type="submit" value=" " 	/>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="un_login" id="login_popup" style="display:none">
+					<div class="login_tab" onclick="$('#login_popup').hide('slow');"> Giriş</div>
+					<div class="login_inside">
+						<div class="login_inside_top"></div>
+						<div class="login_inside_content">
+							<div class="login_userpass">
+								<div class="text_userpass">Kullanıcı adı: </div>
+								<div class="in_userpass">
+									<input class="userpass" type="text" />
+								</div>
+							</div>
+							<div class="login_userpass">
+								<div class="text_userpass">Şifre: </div>
+								<div class="in_userpass">
+									<input class="userpass" type="password" />
+								</div>
+							</div>
+						</div>
+						<div class="login_inside_bottom"></div>
+					</div>
+				</div>
+			</div>
+			<div class="top_nav">
+				<ul>
+					<li><a class="selected" href="#">anasayfa</a></li>
+					<li><a href="#">anasayfa</a></li>
+					<li><a href="#">anasayfa</a></li>
+					<li><a href="#">anasayfa</a></li>
+					<li><a href="#">anasayfa</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="logo"></div>
+	</div>
+	<div class="content">
+		<div class="rounded main">
+			<div class="corners_big">
+				<div class="tl"></div>
+				<div class="tr"></div>
+			</div>
+			<div class="rounded_content">
+				<div class="lside">
+					{% block left %}lll
+					{% endblock %}
+				</div>
+				<div class="rounded light mb20">
+					<div class="corners">
+						<div class="tl"></div>
+						<div class="tr"></div>
+					</div>
+					<div class="rounded_content">
+						{% block right %}rrr
+						{% endblock %}					
+					</div>
+					<div class="corners">
+						<div class="bl"></div>
+						<div class="br"></div>
+					</div>
+				</div>			
+			</div>
+			<div class="corners_big">
+				<div class="bl"></div>
+				<div class="br"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
