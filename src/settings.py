@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# jejeje
-
 from local_settings import *
 
 DEFAULT_CHARSET = 'utf-8'
