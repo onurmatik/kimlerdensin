@@ -1,18 +1,26 @@
-{% extends "base.html" %}
-
+{% extends "base.html"%}
 {% block keywords %}{% endblock %}
 {% block description %}{% endblock %}
 
 {% block title %}Kimlerdensin? Farklarımızla birlikteyiz{% endblock %}
 
+{% block left %}	
+
+	{% include "tab_content.html" %}
+	{% include "right_pub.html" %}
+	{% include "right_content.html" %}
+	
+{% endblock %}
+
+{% block right %}
+						
+{% endblock %}
+
+
 {% block col_1 %}
 	
 	<h2>Güncel aktif sorular</h2>
 	
-	{% for question in questions %}
-		{% include "questions/question.html" %}
-		<br>
-	{% endfor %}
 	
 	<h2>En son cevaplar</h2>
 	

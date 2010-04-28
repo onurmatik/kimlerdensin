@@ -1,8 +1,8 @@
 <div id="tabs">
 		<ul>
-			<li><a class="tab1" href="#tab-1">iﬂler</a></li>
-			<li><a class="tab2" href="#tab-2">be€enilenler</a></li>
-			<li><a class="tab3" href="#tab-3">gündem</a></li>
+			<li><a class="tab1" href="#tab-1">En Son Sorular</a></li>
+			<li><a class="tab2" href="#tab-2">En Son Cevaplar</a></li>
+			<li><a class="tab3" href="#tab-3">Populer Sorular</a></li>
 		</ul>
 		<div class="rounded dark">
 			<div class="corners">
@@ -17,156 +17,56 @@
 					<div class="rounded_content">
 						<div id="tab-1">
 							<div class="joblist">
+								{% for question in questions %}
 								<ul class="list_dotted">
 									<li>
-										<div class="joblist_time">10 dakika önce</div>
-										<div class="joblist_lang">ingilizce - frans›zca</div>
-										<div class="joblist_inform">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</div>
+											<div class="joblist_time">
+												<span id="q_{{ question.id }}_ans" >												
+													{% if question.user_answer %}
+														{% ifequal question.user_answer 1 %}
+															evet
+														{% else %}
+															hayƒ±r
+														{% endifequal %}
+													{% endif %}
+												</span>
+											</div>
+											<div class="joblist_lang" href="/uye/{{ question.user.username }}/">
+												{% if not u %}
+															{# not in a generic detail page #}
+															{{ question.user.username }}</a> soruyor:													
+												{% endif %}
+											
+											</div>
+											<div class="joblist_inform">{{ question.question }} {{ question.verb.verb }}{% ifequal question.verb.type 1 %}lar{% else %}ler{% endifequal %}{% ifequal question.verb.type 1 %}dan mƒ±sƒ±n{% else %}den misin{% endifequal %}?
+											</div>
+										
+	
 									</li>
-									<li>
-										<div class="joblist_time">10 dakika önce</div>
-										<div class="joblist_lang">ingilizce - frans›zca</div>
-										<div class="joblist_inform">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</div>
-									</li>
-									<li>
-										<div class="joblist_time">10 dakika önce</div>
-										<div class="joblist_lang">ingilizce - frans›zca</div>
-										<div class="joblist_inform">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</div>
-									</li>
-									<li class="notdot">
-										<div class="joblist_time">10 dakika önce</div>
-										<div class="joblist_lang">ingilizce - frans›zca</div>
-										<div class="joblist_inform">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</div>
-									</li>
+									
 								</ul>
+								{% endfor %}
 							</div>																				
 						</div>
 						<div id="tab-2">
-							<div class="popusers">
+							<div class="joblist">
+								{% for answer in answers %}				
 								<ul class="list_dotted">
 									<li>
-										<div class="popusers_lside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-										<div class="popusers_rside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
+											<div class="joblist_lang" href="{{ answer.get_absolute_url }}">
+												{{ answer.user.username }}
+											</div>										
+											<div class="joblist_inform">
+												{{ answer}}											
+											</div>						
 									</li>
-									<li>
-										<div class="popusers_lside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-										<div class="popusers_rside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="popusers_lside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-										<div class="popusers_rside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="popusers_lside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-										<div class="popusers_rside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-									</li>
-									<li class="notdot">
-										<div class="popusers_lside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-										<div class="popusers_rside">
-											<div class="popuser_id">
-												<div class="popuser_avatar"><img src="images/avatar.png" width="80" height="80" /></div>
-												<div class="popuser_info">
-													<div class="text_head">Cagri Biber</div>
-													<div class="none">Lorem Ipsum is simply dummy </div>
-													<div class="none">Text of the printing </div>
-													<div class="none">Make a type </div>
-												</div>
-											</div>
-										</div>
-									</li>
+									
 								</ul>
-							</div>
-							</div>
+								{% endfor %}
+							</div>																				
+						</div>
+						
+						
 						<div id="tab-3">3</div>
 					</div>
 					<div class="corners">
