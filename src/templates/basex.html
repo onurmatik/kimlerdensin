@@ -63,8 +63,6 @@
 			<a href="{% url question_add %}">soru sor</a>
 			|
 			<a href="{{ user.get_absolute_url }}">sayfam</a>
-		{% else %}
-			<a href="{% url django.contrib.auth.views.login %}">giriş</a> |
 		{% endif %}
 		&nbsp;
 		</td>

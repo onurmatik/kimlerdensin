@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>{% block title %}{% endblock %}</title>
+<title>{% block title %}Kimlerdensin{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 <link rel="stylesheet" type="text/css" href="/css/reset.css"/>
 <script type="text/javascript" src="/jslib/jquery-1.4.2.min.js" language="javascript"></script>
@@ -59,11 +59,10 @@
 			</div>
 			<div class="top_nav">
 				<ul>
-					<li><a class="selected" href="#">anasayfa</a></li>
-					<li><a href="#">anasayfa</a></li>
-					<li><a href="#">anasayfa</a></li>
-					<li><a href="#">anasayfa</a></li>
-					<li><a href="#">anasayfa</a></li>
+					<li><a id="main" class="selected" href="{% url index.views.index %}">Ana Sayfa</a></li>
+					<li><a id="questions" href="{% url questions.views.question_list %}">Sorular</a></li>
+					<li><a id="members" href="/uyeler/">Uyeler</a></li>
+					<li><a href="#">Yardim</a></li>
 				</ul>
 			</div>
 		</div>
@@ -77,7 +76,7 @@
 			</div>
 			<div class="rounded_content">
 				<div class="lside">
-					{% block left %}lll
+					{% block left %}
 					{% endblock %}
 				</div>
 				<div class="rounded light mb20">
@@ -86,7 +85,7 @@
 						<div class="tr"></div>
 					</div>
 					<div class="rounded_content">
-						{% block right %}rrr
+						{% block right %}
 						{% endblock %}					
 					</div>
 					<div class="corners">

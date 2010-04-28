@@ -5,8 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django import forms
 from questions.models import Question, Answer, Verb
 from django.http import HttpResponseRedirect, HttpResponse
-from commonutils.slug import slugify
-from django.template import RequestContext
+from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
 from django.core.cache import cache
